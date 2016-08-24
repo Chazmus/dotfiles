@@ -51,7 +51,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git mvn bash docker vagrant vi-mode gem web-search colored-man-pages colorize history-substring-search npm zsh-syntax-highlighting)
+plugins=(git mvn bash docker vagrant gem web-search colored-man-pages colorize history-substring-search npm zsh-syntax-highlighting)
 
 # User configuration
 
@@ -84,15 +84,6 @@ export GIT_HOME=~/workspace
 # Functions #
 #############
 
-function v {
-if [ -z "$1" ]
-then
-    vagrant ssh
-else
-    vagrant $*
-fi
-}
-
 function findfile {
     find . -iname "*$@*"
 }
@@ -101,6 +92,17 @@ function findfile {
 # Words of wisdom #
 ###################
 # fortune|cowsay|lolcat --spread 1
+
+################
+# User defined #
+################
+if type fuck > /dev/null; then
+    eval $(thefuck --alias)
+fi
+
+if type autojump > /dev/null; then
+    . /usr/share/autojump/autojump.sh
+fi
 
 ############
 # Aliases #
