@@ -8,7 +8,7 @@
 
 dir=~/dotfiles
 olddir=~/dotfiles_old
-files="bashrc zshrc oh-my-zsh"
+files="zshrc"
 
 ###########################
 
