@@ -1,4 +1,4 @@
-# A hench gitignore (That I'm using as my agignore)
+# That I'm using as my agignore
 # Created by https://www.gitignore.io/api/bower,eclipse,grunt,intellij,maven,node,vagrant,vim
 
 ### Bower ###
@@ -13,7 +13,6 @@ bower_components
 .metadata
 bin/
 tmp/
-*.tmp
 *.bak
 *.swp
 *~.nib
@@ -65,9 +64,6 @@ local.properties
 ### grunt ###
 # Grunt usually compiles files inside this directory
 dist/
-
-# Grunt usually preprocesses files such as coffeescript, compass... inside the .tmp directory
-.tmp/
 
 
 ### Intellij ###
@@ -137,13 +133,6 @@ buildNumber.properties
 # Exclude maven wrapper
 !/.mvn/wrapper/maven-wrapper.jar
 
-
-### Node ###
-# Logs
-logs
-*.log
-npm-debug.log*
-
 # Runtime data
 pids
 *.pid
@@ -204,3 +193,7 @@ Session.vim
 *~
 # auto-generated tag files
 tags
+
+### Minified Frontend ###
+*.min.js
+*.min.css
