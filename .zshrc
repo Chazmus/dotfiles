@@ -94,6 +94,9 @@ function findfile {
 # Words of wisdom #
 ###################
 # fortune|cowsay|lolcat --spread 1
+if [ -f $HOME/.bashrc_env ]; then
+    source $HOME/.bashrc_env
+fi
 
 ################
 # User defined #
@@ -121,16 +124,5 @@ alias mci="mvn clean install"
 alias aptsearch="apt-cache search"
 alias aptinstall="sudo apt-get install"
 alias docs="cd /home/chaz/Documents/"
-
-alias collections="cd ~/workspace/collections"
-alias wayb="cd ~/workspace/WAYB"
-alias ayb="cd ~/workspace/AYB"
-alias music="cd ~/workspace/music-express"
-alias churchillcentral="cd ~/workspace/churchill-central"
-alias churchillarchive="cd ~/workspace/churchill-archive"
-alias dpp="cd ~/workspace/dpp"
-alias rep="cd ~/workspace/routledge-encyclopedia-of-philosophy"
-alias rpa="cd ~/workspace/routledge-performance-archive"
-alias fashion="cd ~/workspace/fashion-central"
 
 alias ...="cd ../.."
