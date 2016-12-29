@@ -197,3 +197,4 @@ tags
 ### Minified Frontend ###
 *.min.js
 *.min.css
+*.css.map
