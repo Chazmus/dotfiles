@@ -123,6 +123,6 @@ alias xclip="xclip -selection c"
 alias mci="mvn clean install"
 alias aptsearch="apt-cache search"
 alias aptinstall="sudo apt-get install"
-alias docs="cd /home/chaz/Documents/"
+alias docs="cd $HOME/Documents/"
 
 alias ...="cd ../.."
