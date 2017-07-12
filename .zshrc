@@ -55,10 +55,12 @@ COMPLETION_WAITING_DOTS="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git mvn bash docker vagrant gem web-search colored-man-pages colorize history-substring-search npm zsh-syntax-highlighting)
 
-# User configuration
-
+#####################
+# User configuration#
+#####################
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
+export PATH=~/.npm-global/bin:$PATH
 
 source $ZSH/oh-my-zsh.sh
 
@@ -93,7 +95,8 @@ function findfile {
 ###################
 # Words of wisdom #
 ###################
-# fortune|cowsay|lolcat --spread 1
+fortune|cowsay|lolcat --spread 1
+
 if [ -f $HOME/.bashrc_env ]; then
     source $HOME/.bashrc_env
 fi
