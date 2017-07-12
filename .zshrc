@@ -109,7 +109,7 @@ if type fuck > /dev/null; then
 fi
 
 if type autojump > /dev/null; then
-    . /usr/share/autojump/autojump.sh
+    . /usr/share/autojump/autojump.zsh
 fi
 
 ############
