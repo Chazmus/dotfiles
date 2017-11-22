@@ -95,7 +95,9 @@ function findfile {
 ###################
 # Words of wisdom #
 ###################
-fortune|cowsay|lolcat --spread 1
+if type fortune > /dev/null && type cowsay > /dev/null && type lolcat > /dev/null; then
+  fortune|cowsay|lolcat --spread 1
+fi
 
 if [ -f $HOME/.bashrc_env ]; then
     source $HOME/.bashrc_env
