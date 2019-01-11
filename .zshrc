@@ -1,8 +1,3 @@
-
-# Jump into tmux
-if [[ -z "$TMUX" ]]; then
-    exec tmux
-fi
 # Path to your oh-my-zsh installation.
   export ZSH=$HOME/.oh-my-zsh
 
