@@ -43,3 +43,5 @@
     helper = store
 [mergetool "meld"]
 	path = /c/Program Files (x86)/Meld/Meld.exe
+[help]
+	autocorrect = 1
