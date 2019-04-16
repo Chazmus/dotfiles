@@ -53,7 +53,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git mvn bash docker vagrant gem web-search colored-man-pages colorize history-substring-search npm zsh-syntax-highlighting)
+plugins=(git mvn docker vagrant gem web-search colored-man-pages colorize history-substring-search npm)
 
 #####################
 # User configuration#
