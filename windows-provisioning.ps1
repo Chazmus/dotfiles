@@ -11,3 +11,4 @@ choco install unity-hub -y
 choco install geforce-experience -y
 choco install python -y
 choco install vscode -y
+choco install nodejs -y
