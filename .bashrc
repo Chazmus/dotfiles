@@ -14,19 +14,5 @@ alias aptsearch="apt-cache search"
 alias aptinstall="sudo apt-get install"
 alias docs="cd $HOME/Documents/"
 alias ...="cd ../.."
-
-
-##############################
-# zsh config
-##############################
-
-cd
-if [ "$SHELL" = "/bin/bash" ]
-then
-    exec zsh
-fi
-cd
-if [ "$SHELL" = "/bin/bash" ]
-then
-    exec zsh
-fi
+alias la="ls -a"
+alias ll="ls -la"
