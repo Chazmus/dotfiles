@@ -13,3 +13,4 @@ choco install python -y
 choco install vscode -y
 choco install nodejs -y
 choco install openjdk -y
+choco install openoffice -y
