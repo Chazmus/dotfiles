@@ -14,3 +14,4 @@ choco install vscode -y
 choco install nodejs -y
 choco install openjdk -y
 choco install openoffice -y
+choco install gimp -y
