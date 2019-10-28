@@ -5,7 +5,6 @@
 # Install my MFING packages
 choco install git -y
 choco install googlechrome -y
-choco install steam -y
 choco install jetbrainstoolbox -y
 choco install unity-hub -y
 choco install geforce-experience -y
@@ -15,3 +14,5 @@ choco install nodejs -y
 choco install openjdk -y
 choco install openoffice -y
 choco install gimp -y
+choco install spotify -y
+choco install steam -y
