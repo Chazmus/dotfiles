@@ -19,3 +19,4 @@ choco install steam -y
 choco install twitch -y
 choco install discord -y
 choco install audacity -y
+choco install 7zip -y
