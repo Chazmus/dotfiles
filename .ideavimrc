@@ -2,5 +2,5 @@ set ignorecase
 set smartcase
 set surround
 set ideajoin
-nnoremap s :action KJumpAction
 nnoremap p pgvy
+nnoremap s :action KJumpAction<Enter>
