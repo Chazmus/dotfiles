@@ -21,3 +21,4 @@ choco install discord -y
 choco install audacity -y
 choco install 7zip -y
 choco install adobereader -y
+choco install utorrent -y
