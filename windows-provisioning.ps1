@@ -11,6 +11,7 @@ Function Invoke-Main {
         Set-ExecutionPolicy Bypass -Scope Process -Force; iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
     }
 
+<<<<<<< Updated upstream
     # Install my MFING packages
     # The always list
     choco install git -y
@@ -22,9 +23,9 @@ Function Invoke-Main {
     choco install gimp -y
     choco install spotify -y
     choco install steam -y
-    choco install twitch -y
     choco install discord -y
     choco install 7zip -y
+    choco install cmdermini -y
 
     # Maybe?
     # choco install utorrent -y
