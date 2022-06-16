@@ -4,7 +4,7 @@
 	trustctime = false
     editor = vim
     filemode = false
-	autocrlf = true
+	autocrlf = false
 	excludesfile = /home/chaz/.gitignore_global
 [color]
     ui = true

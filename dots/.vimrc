@@ -1,45 +1,36 @@
 " Chaz Bailey's vimrc
 
 " Plugin Management {{{
-" Vundle{{{
-" Required first is the vundle stuff
+" Vim Plug{{{
 " 
 filetype off
 set nocompatible
 set rtp+=$HOME/.vim/bundle/Vundle.vim
-call vundle#begin()
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-git'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/nerdtree'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'PProvost/vim-ps1.git'
-Plugin 'tomtom/tlib_vim.git'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'yegappan/mru'
-Plugin 'justinmk/vim-sneak'
-Plugin 'tpope/vim-pathogen'
-Plugin 'Lokaltog/vim-easymotion.git'
-Plugin 'EasyGrep'
-Plugin 'altercation/vim-colors-solarized.git'
-Plugin 'rodjek/vim-puppet.git'
-Plugin 'aperezdc/vim-template'
-Plugin 'prabirshrestha/vim-lsp'
-Plugin 'mattn/vim-lsp-settings'
-Plugin 'prabirshrestha/asyncomplete.vim'
-Plugin 'prabirshrestha/asyncomplete-lsp.vim'
+call plug#begin()
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdtree'
+Plug 'kien/ctrlp.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'pprovost/vim-ps1'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tcomment_vim'
+Plug 'yegappan/mru'
+Plug 'justinmk/vim-sneak'
+Plug 'lokaltog/vim-easymotion'
+Plug 'vim-scripts/EasyGrep'
+Plug 'altercation/vim-colors-solarized'
+Plug 'aperezdc/vim-template'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 
-call vundle#end()
+call plug#end()
 filetype plugin indent on
-
-" Run Pathogen... just coz. It may complain about this the first time it's run
-execute pathogen#infect()
 
 " }}}
 " NERDTree Config {{{

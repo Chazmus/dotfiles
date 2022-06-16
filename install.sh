@@ -32,9 +32,6 @@ backup_dotfiles = uniquify(os.path.join(target_dir, "dotfiles_old"))
 for filename in dotfiles_to_deploy:
     source_file = os.path.join(source_dir, filename)
     destination = os.path.join(target_dir, filename)
-    print("Checking if dotfile already exists")
-    print(destination)
-    print(os.path.exists(destination))
     if os.path.exists(destination):
         if not os.path.exists(backup_dotfiles):
             print("Creating backup dotfiles directory at: " + backup_dotfiles)
@@ -45,5 +42,4 @@ for filename in dotfiles_to_deploy:
     print("Creating symlink from " + filename)
     os.symlink(source_file, destination, target_is_directory=False)
 
-
-
+os.system("curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim")
