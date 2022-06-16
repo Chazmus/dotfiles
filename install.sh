@@ -1,41 +1,49 @@
-#!/bin/bash
+#! /usr/bin/env python3
+# -*- coding: utf-8 -*-
+# vim:fenc=utf-8
+#
+# Copyright © 2022 chaz.bailey <chaz.bailey@C02YJ1MVJGH8>
+#
+# Distributed under terms of the MIT license.
 
-#############################
-# For installing my dotfiles
-#############################
+import os
+import shutil
 
-########## Variables#######
 
-dir=~/dotfiles
-olddir=~/dotfiles_old
-files="zshrc"
+"""
+Install the dotfiles in this directory
+"""
 
-###########################
+target_dir = os.path.expanduser("~")
+print("Deploying dotfiles to " + target_dir)
+source_dir = os.path.join(os.path.dirname(__file__), "dots")
+dotfiles_to_deploy = os.listdir(source_dir)
 
-# create dotfiles_old in homedir
-echo "Creating $olddir for backup of any existing dotfiles in ~"
-mkdir -p $olddir
-echo "...done"
+def uniquify(path):
+    filename, extension = os.path.splitext(path)
+    counter = 1
+    while os.path.exists(path):
+        path = filename + "-" + str(counter) + extension
+        counter += 1
+    return path
 
-# change to the dotfiles directory
-echo "Changing to the $dir directory"
-cd $dir
-echo "...done"
+backup_dotfiles = uniquify(os.path.join(target_dir, "dotfiles_old"))
 
-# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
-for file in $files; do
-    echo "Moving any existing dotfiles from ~ to $olddir"
-    mv ~/.$file ~/dotfiles_old/
-    echo "Creating symlink to $file in home directory."
-    ln -s $dir/$file ~/.$file
-done
+for filename in dotfiles_to_deploy:
+    source_file = os.path.join(source_dir, filename)
+    destination = os.path.join(target_dir, filename)
+    print("Checking if dotfile already exists")
+    print(destination)
+    print(os.path.exists(destination))
+    if os.path.exists(destination):
+        if not os.path.exists(backup_dotfiles):
+            print("Creating backup dotfiles directory at: " + backup_dotfiles)
+            os.makedirs(backup_dotfiles)
+        
+        print("Moving " + destination + " to backup dotfiles directory")
+        shutil.move(destination, backup_dotfiles)
+    print("Creating symlink from " + filename)
+    os.symlink(source_file, destination, target_is_directory=False)
 
-# Install my vim config from github
-cd ~
-git clone --recursive https://github.com/chazmus/vim-config .vim
-echo "Moving vimrc into ~/dotfiles_old"
-mv ~/.vimrc ~/dotfiles_old
-echo "Creating vimrc symlink"
-ln -s ~/.vim/vimrc ~/.vimrc
 
 

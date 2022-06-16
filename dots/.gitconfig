@@ -8,8 +8,6 @@
 	excludesfile = /home/chaz/.gitignore_global
 [color]
     ui = true
-[merge]
-	tool = p4merge
 [mergetool]
     keeptemporaries = false
     keepbackups = false
@@ -38,10 +36,8 @@
 	ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ ;}; gi"
 [user]
     name = Chaz Bailey
-    email = charles.s.bailey@gmail.com
+    email = chaz.bailey@forgerock.com
 [credential]
     helper = store
-[mergetool "meld"]
-	path = /c/Program Files (x86)/Meld/Meld.exe
 [help]
 	autocorrect = 1

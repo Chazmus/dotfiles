@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-  export ZSH=$HOME/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -31,7 +31,7 @@ ZSH_THEME="ys"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -53,16 +53,13 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git mvn docker vagrant gem web-search colored-man-pages colorize history-substring-search npm)
+plugins=(git docker colored-man-pages colorize history-substring-search npm bazel zsh-autosuggestions zsh-syntax-highlighting bazel mvn)
+
+source $ZSH/oh-my-zsh.sh
 
 #####################
 # User configuration#
 #####################
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH"
-# export MANPATH="/usr/local/man:$MANPATH"
-export PATH=~/.npm-global/bin:$PATH
-
-source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -70,24 +67,48 @@ source $ZSH/oh-my-zsh.sh
 # Preferred editor for local and remote sessions
 export EDITOR='vim'
 
-# ssh
-export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
+###########################
+# Temper
+###########################
+export PATH="/Users/${USER}/Library/Python/3.9/bin:${PATH}"
+# Enable bash completions
+autoload -Uz bashcompinit && bashcompinit
+# # Register temper for auto-completion
+eval "$(register-python-argcomplete temper)"
+
+###################################
+# ForgeOps - Deploying CDK on GKE
+###################################
+export GCP_PROJECT_ID=engineering-devops
+export GKE_CLUSTER_NAME=eng-shared-1
+export GKE_CLUSTER_REGION=us-east1
+export GKE_CONTEXT=gke_${GCP_PROJECT_ID}_${GKE_CLUSTER_REGION}_${GKE_CLUSTER_NAME}
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+export GKE_NAMESPACE=cbailey
 
 #########################
-# Environment Variables #
+# Jenv
 #########################
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
 
-export GIT_HOME=~/workspace
+########################
+# Deploying AM locally #
+########################
+export MAVEN_OPTS='-Xmx8g -Xms2g'
+export PATH="/usr/local/opt/tomcat@8/bin:$PATH"
 
+export TOMCAT_WEBAPP_DIR="/usr/local/Cellar/tomcat@8/8.5.72/libexec/webapps"
+
+########################
+# User path folder
+########################
+export PATH="/Users/${USER}/bin:${PATH}"
 #############
 # Functions #
 #############
-
 function findfile {
     find . -iname "*$@*"
 }
@@ -96,7 +117,7 @@ function findfile {
 # Words of wisdom #
 ###################
 if type fortune > /dev/null && type cowsay > /dev/null && type lolcat > /dev/null; then
-  fortune|cowsay|lolcat --spread 1
+    fortune|cowsay|lolcat --spread 1
 fi
 
 if [ -f $HOME/.bashrc_env ]; then
@@ -114,20 +135,31 @@ if type autojump > /dev/null; then
     . /usr/share/autojump/autojump.zsh
 fi
 
+if type fasd > /dev/null; then
+    eval "$(fasd --init auto)"
+fi
+
 ############
 # Aliases #
 ###########
-alias vi=vim
 alias wow="git status"
-alias wp="cd ~/workspace"
-alias aardwolf="telnet aardmud.org 23"
-alias zshrc="vim ~/.zshrc"
-alias vimrc="vim ~/.vimrc"
-alias sshconfig="vim ~/.ssh/config"
-alias xclip="xclip -selection c"
 alias mci="mvn clean install"
-alias aptsearch="apt-cache search"
-alias aptinstall="sudo apt-get install"
-alias docs="cd $HOME/Documents/"
+alias mciFast="mvn clean install -DskipTests -DskipITs -Dmaven.test.skip -T1C -P\!XUI"
+alias mciVFast="mvn --threads 0.5C --projects openam-server --also-make --define pmd.skip=true --define maven.test.skip=true --define skipTests=true --activate-profiles \!xui install"
+alias mciDocker="mvn clean install -DskipTests -DskipITs -Dmaven.test.skip -T1C -P\!XUI,docker,descriptor"
+alias weather="curl -s wttr.in"
+alias save-script="history | tail -20 |cut -c 8- > newscript.sh;  chmod 777 newscript.sh; sed '1 i #!/bin/bash' newscript.sh"
 
-alias ...="cd ../.."
+####################
+# Custom Functions
+# ##################
+
+temperClass() {
+    # Run temper functional test on a given class
+    temper functional-tests --deploy 7.2.0-SNAPSHOT --with-timetravel --hostname openam.localtest.me --only-classes=$1
+}
+
+eval "$(export _AMMAN_COMPLETE=source_zsh; amman)"
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
