@@ -5,7 +5,6 @@
 " 
 filetype off
 set nocompatible
-set rtp+=$HOME/.vim/bundle/Vundle.vim
 call plug#begin()
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-git'
@@ -27,8 +26,6 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
-
-
 call plug#end()
 filetype plugin indent on
 
