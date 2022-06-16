@@ -26,6 +26,7 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 filetype plugin indent on
 
@@ -90,6 +91,7 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " Lower a-z
 let g:EasyMotion_keys = 'fjdkslaghtyrueiwoqpbnvmcxz'
 " }}}
+
 " }}}
 " General Key Mappings {{{
 let mapleader = " "
