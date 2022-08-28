@@ -94,3 +94,5 @@ nmap <leader>T :action ActivateTerminalToolWindow<cr>
 " IdeaVim uses 'a' for alt instead of Vim's 'm'
 nmap <a-j> 15gj
 nmap <a-k> 15gk
+
+inoremap jj <Esc>
