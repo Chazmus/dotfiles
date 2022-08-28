@@ -106,6 +106,8 @@ fi
 
 if type fasd > /dev/null; then
     eval "$(fasd --init auto)"
+else
+    echo "Install fasd, it's good"
 fi
 
 # Fuzzy finder
