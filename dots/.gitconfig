@@ -1,3 +1,5 @@
+[pull]
+    rebase = true
 [push]
     default = simple
 [core]
@@ -5,7 +7,7 @@
     editor = vim
     filemode = false
 	autocrlf = false
-	excludesfile = /home/chaz/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [color]
     ui = true
 [mergetool]

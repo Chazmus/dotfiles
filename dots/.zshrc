@@ -89,12 +89,15 @@ if [ -f $HOME/.bashrc_env ]; then
 fi
 
 
+#######################
+# Load env settings   #
+#######################
 if [ -f $HOME/.zshrc_env ]; then
     source $HOME/.zshrc_env
 fi
 
 ################
-# User defined #
+# Some tools   #
 ################
 if type fuck > /dev/null; then
     eval $(thefuck --alias)
