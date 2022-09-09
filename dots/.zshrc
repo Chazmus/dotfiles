@@ -29,8 +29,8 @@ ZSH_THEME="ys"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
-CORRECT_IGNORE="[_|.]*"
+ENABLE_CORRECTION="false"
+# CORRECT_IGNORE="[_|.]*"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -84,6 +84,10 @@ if type fortune > /dev/null && type cowsay > /dev/null && type lolcat > /dev/nul
     fortune|cowsay|lolcat --spread 1
 fi
 
+
+###################
+# Words of wisdom #
+###################
 if [ -f $HOME/.bashrc_env ]; then
     source $HOME/.bashrc_env
 fi
@@ -109,12 +113,15 @@ fi
 
 if type fasd > /dev/null; then
     eval "$(fasd --init auto)"
+    alias v='f -e vim' # quick opening files with vim
 else
     echo "Install fasd, it's good"
 fi
 
 # Fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+[ -d ~/bin ] && PATH=$PATH:~/bin
 
 ############
 # Aliases #
