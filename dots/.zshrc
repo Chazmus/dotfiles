@@ -49,6 +49,10 @@ COMPLETION_WAITING_DOTS="true"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Auto start tmux
+#if type byobu > /dev/null
+#then
+#    byobu
+#elif [ -z "$TMUX" ]
 if [ -z "$TMUX" ]
 then
     tmux attach -t TMUX || tmux new -s TMUX
