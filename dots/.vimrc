@@ -114,6 +114,10 @@ nnoremap <C-k> <C-W>k
 nnoremap <C-l> <C-W>l
 nnoremap <C-h> <C-W>h
 
+" Tab to indent in visual line mode
+xnoremap <Tab> >gv
+xnoremap <S-Tab> <gv
+
 " }}}
 " User created commands{{{
 

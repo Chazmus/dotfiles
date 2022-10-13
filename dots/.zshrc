@@ -55,7 +55,7 @@ COMPLETION_WAITING_DOTS="true"
 #elif [ -z "$TMUX" ]
 if [ -z "$TMUX" ]
 then
-    tmux attach -t TMUX || tmux new -s TMUX
+    tmux
 fi
 
 
@@ -124,8 +124,10 @@ fi
 
 # Fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 [ -d ~/bin ] && PATH=$PATH:~/bin
+
+# Nix
+if [ -e /home/cbailey/.nix-profile/etc/profile.d/nix.sh ]; then . /home/cbailey/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 ############
 # Aliases #
@@ -133,3 +135,4 @@ fi
 alias wow="git status"
 alias mci="mvn clean install"
 alias weather="curl -s wttr.in"
+

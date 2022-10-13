@@ -24,6 +24,9 @@ let mapleader = " "
 " nmap <leader>k <c-w>k
 " nmap <leader>j <c-w>j
 
+" Tab to indent in visual line mode
+xnoremap <Tab> >gv
+xnoremap <S-Tab> <gv
 
 " Closing tabs
 nmap <leader>q :action CloseContent<cr>
