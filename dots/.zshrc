@@ -81,6 +81,10 @@ function findfile {
     find . -iname "*$@*"
 }
 
+function newscript {
+    history | tail -20 |cut -c 8- > newscript.sh;  chmod 777 newscript.sh; sed -i '1 i\#!/usr/bin/bash' newscript.sh
+}
+
 ###################
 # Words of wisdom #
 ###################
@@ -96,13 +100,6 @@ if [ -f $HOME/.bashrc_env ]; then
     source $HOME/.bashrc_env
 fi
 
-
-#######################
-# Load env settings   #
-#######################
-if [ -f $HOME/.zshrc_env ]; then
-    source $HOME/.zshrc_env
-fi
 
 ################
 # Some tools   #
@@ -122,6 +119,10 @@ else
     echo "Install fasd, it's good"
 fi
 
+if type trash-put > /dev/null; then
+    alias rm='trash-put'
+fi
+
 # Fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -d ~/bin ] && PATH=$PATH:~/bin
@@ -129,10 +130,31 @@ fi
 # Nix
 if [ -e /home/cbailey/.nix-profile/etc/profile.d/nix.sh ]; then . /home/cbailey/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
+##################
+# Copy paste cli #
+##################
+
+if type xclip > /dev/null; then
+    # for linux
+    alias copy='xclip -selection clipboard'
+    alias paste='xclip -selection clipboard -o'
+elif type pbcopy > /dev/null; then
+    # for mac
+    alias copy='pbcopy'
+    alias paste='pbpaste'
+fi
+
+
+#######################
+# Load env settings   #
+#######################
+if [ -f $HOME/.zsh_env ]; then
+    source $HOME/.zsh_env
+fi
+
 ############
 # Aliases #
 ###########
 alias wow="git status"
 alias mci="mvn clean install"
 alias weather="curl -s wttr.in"
-
