@@ -100,10 +100,6 @@ fi
 ################
 # Some tools   #
 ################
-if type fuck > /dev/null; then
-    eval $(thefuck --alias)
-fi
-
 if type autojump > /dev/null; then
     . /usr/share/autojump/autojump.zsh
 fi
