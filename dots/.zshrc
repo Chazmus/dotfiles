@@ -1,4 +1,3 @@
-
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -48,16 +47,11 @@ COMPLETION_WAITING_DOTS="true"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Auto start tmux
-#if type byobu > /dev/null
-#then
-#    byobu
-#elif [ -z "$TMUX" ]
+# Load up TMUX
 if [ -z "$TMUX" ]
 then
     tmux
 fi
-
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -69,9 +63,9 @@ plugins=(git docker colored-man-pages colorize history-substring-search npm baze
 
 source $ZSH/oh-my-zsh.sh
 
-#####################
-# User configuration#
-#####################
+##########################
+# Vim editor best editor #
+##########################
 export EDITOR='vim'
 
 #############
@@ -92,14 +86,16 @@ if type fortune > /dev/null && type cowsay > /dev/null && type lolcat > /dev/nul
     fortune|cowsay|lolcat --spread 1
 fi
 
-
-###################
-# Words of wisdom #
-###################
-if [ -f $HOME/.bashrc_env ]; then
-    source $HOME/.bashrc_env
+#######################
+# Load env settings   #
+#######################
+if [ -f $HOME/.zsh_env ]; then
+    source $HOME/.zsh_env
 fi
 
+if [ -f $HOME/.bash_env ]; then
+    source $HOME/.bash_env
+fi
 
 ################
 # Some tools   #
@@ -144,13 +140,6 @@ elif type pbcopy > /dev/null; then
     alias paste='pbpaste'
 fi
 
-
-#######################
-# Load env settings   #
-#######################
-if [ -f $HOME/.zsh_env ]; then
-    source $HOME/.zsh_env
-fi
 
 ############
 # Aliases #
