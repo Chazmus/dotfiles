@@ -100,8 +100,14 @@ fi
 ################
 # Some tools   #
 ################
-if type autojump > /dev/null; then
-    . /usr/share/autojump/autojump.zsh
+# if type autojump > /dev/null; then
+#     . /usr/share/autojump/autojump.zsh
+# fi
+
+# Jenv
+if type jenv > /dev/null; then
+    export PATH=$HOME/.jenv/bin:$PATH
+    eval "$(jenv init -)"
 fi
 
 if type fasd > /dev/null; then
@@ -117,6 +123,10 @@ fi
 
 # Fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+###################
+# User bin folder #
+###################
 [ -d ~/bin ] && PATH=$PATH:~/bin
 
 # Nix
@@ -143,3 +153,4 @@ fi
 alias wow="git status"
 alias mci="mvn clean install"
 alias weather="curl -s wttr.in"
+alias rebase="git merge-base --fork-point master | copy && git rebase -i `paste`"

@@ -92,6 +92,10 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:EasyMotion_keys = 'fjdkslaghtyrueiwoqpbnvmcxz'
 " }}}
 
+" TComment Config{{{
+xnoremap <C-/> gc
+" }}}
+
 " }}}
 " General Key Mappings {{{
 let mapleader = " "
@@ -117,6 +121,14 @@ nnoremap <C-h> <C-W>h
 " Tab to indent in visual line mode
 xnoremap <Tab> >gv
 xnoremap <S-Tab> <gv
+
+" CTRL-X and SHIFT-Del are Cut
+vnoremap <C-X> "+x
+vnoremap <S-Del> "+x
+
+" CTRL-C and CTRL-Insert are Copy
+vnoremap <C-C> "+y
+vnoremap <C-Insert> "+y
 
 " }}}
 " User created commands{{{
