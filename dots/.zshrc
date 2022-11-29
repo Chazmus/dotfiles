@@ -67,6 +67,8 @@ source $ZSH/oh-my-zsh.sh
 # Vim editor best editor #
 ##########################
 export EDITOR='vim'
+# vim powers at the command line
+set -o vi
 
 #############
 # Functions #
