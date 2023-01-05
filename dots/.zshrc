@@ -148,11 +148,9 @@ elif type pbcopy > /dev/null; then
     alias paste='pbpaste'
 fi
 
-
 ############
 # Aliases #
 ###########
 alias wow="git status"
 alias mci="mvn clean install"
 alias weather="curl -s wttr.in"
-alias rebase="git merge-base --fork-point master | copy && git rebase -i `paste`"
