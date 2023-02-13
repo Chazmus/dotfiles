@@ -46,7 +46,7 @@ for filename in dotfiles_to_deploy:
                 if not os.path.exists(backup_dotfiles):
                     print("Creating backup dotfiles directory at: " + backup_dotfiles)
                     os.makedirs(backup_dotfiles)
-                backup_folder = os.path.join(backup_dotfiles, ".config")
+                backup_folder = os.path.join(backup_dotfiles, ".config", config_folder)
                 print("Moving " + new_dest + " to backup dotfiles directory: " + backup_folder)
                 shutil.move(new_dest, backup_folder)
             print("Creating symlink from " + new_source + " to " + new_dest)
