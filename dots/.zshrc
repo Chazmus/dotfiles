@@ -70,6 +70,11 @@ export EDITOR='vim'
 # vim powers at the command line
 set -o vi
 
+# Actually, neovim editor best editor
+if type nvim > /dev/null; then
+    alias vim="nvim"
+fi
+
 #############
 # Functions #
 #############
@@ -102,10 +107,6 @@ fi
 ################
 # Some tools   #
 ################
-# if type autojump > /dev/null; then
-#     . /usr/share/autojump/autojump.zsh
-# fi
-
 # Jenv
 if type jenv > /dev/null; then
     export PATH=$HOME/.jenv/bin:$PATH
@@ -119,9 +120,9 @@ else
     echo "Install fasd, it's good"
 fi
 
-if type trash-put > /dev/null; then
-    alias rm='trash-put'
-fi
+# if type trash-put > /dev/null; then
+#    alias rm='trash-put'
+# fi
 
 # Fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -148,9 +149,11 @@ elif type pbcopy > /dev/null; then
     alias paste='pbpaste'
 fi
 
+
 ############
 # Aliases #
 ###########
 alias wow="git status"
 alias mci="mvn clean install"
 alias weather="curl -s wttr.in"
+
