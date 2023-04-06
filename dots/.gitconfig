@@ -2,13 +2,13 @@
     rebase = true
 [push]
     default = simple
-	autoSetupRemote = true
+    autoSetupRemote = true
 [core]
-	trustctime = false
+    trustctime = false
     editor = vim
     filemode = false
-	autocrlf = false
-	excludesfile = ~/.gitignore_global
+    autocrlf = false
+    excludesfile = ~/.gitignore_global
 [color]
     ui = true
 [mergetool]
@@ -36,13 +36,13 @@
     lg2-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
     lg3-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
     yolo = push --force
-	ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ ;}; gi"
+    ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ ;}; gi"
 [user]
     name = Chaz Bailey
     email = chaz.bailey@forgerock.com
 [credential]
     helper = store
 [help]
-	autocorrect = 1
+    autocorrect = 1
 [rebase]
-	autoStash = true
+    autoStash = true
