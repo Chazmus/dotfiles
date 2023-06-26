@@ -2,7 +2,7 @@
     rebase = true
 [push]
     default = simple
-    autoSetupRemote = true
+	  autoSetupRemote = true
 [core]
     trustctime = false
     editor = vim
