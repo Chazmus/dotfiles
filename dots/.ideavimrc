@@ -101,3 +101,8 @@ nmap <a-k> 15gk
 
 " jj to leave insert mode
 inoremap jj <Esc>
+
+" camel case motions
+nmap w [w
+map b [b
+nmap e ]w
