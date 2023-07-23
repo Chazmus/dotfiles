@@ -137,8 +137,8 @@ if type xclip > /dev/null; then
     # for x based linux wms
     alias copy='xclip -selection clipboard'
     alias paste='xclip -selection clipboard -o'
-    # for mac
 elif type pbcopy > /dev/null; then
+    # for mac
     alias copy='pbcopy'
     alias paste='pbpaste'
 elif type wl-copy > /dev/null; then
