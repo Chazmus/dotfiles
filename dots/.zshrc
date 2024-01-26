@@ -59,7 +59,7 @@ COMPLETION_WAITING_DOTS="true"
 # Add wisely, as too many plugins slow down shell startup.
 # git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 # git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-plugins=(git docker colored-man-pages colorize history-substring-search npm bazel zsh-autosuggestions zsh-syntax-highlighting mvn)
+plugins=(git docker colored-man-pages colorize history-substring-search npm bazel zsh-autosuggestions zsh-syntax-highlighting mvn jira)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -73,6 +73,13 @@ set -o vi
 # Actually, neovim editor best editor
 if type nvim > /dev/null; then
     alias vim="nvim"
+fi
+
+##########################
+# Restish
+##########################
+if type restish > /dev/null; then
+    alias restish="noglob restish"
 fi
 
 #############
@@ -129,6 +136,13 @@ fi
 # Nix
 if [ -e /home/cbailey/.nix-profile/etc/profile.d/nix.sh ]; then . /home/cbailey/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
+# go
+# If directory exists, add to path
+if [ -d ~/go/bin ]; then
+  export PATH=$PATH:~/go/bin
+  export PATH=$PATH:/usr/lib/go/bin
+fi
+
 ##################
 # Copy paste cli #
 ##################
@@ -153,6 +167,12 @@ fi
 alias wow="git status"
 alias mci="mvn clean install"
 alias weather="curl -s wttr.in"
+if type lazygit > /dev/null; then
+  alias lg="lazygit"
+fi
+if type lazydocker > /dev/null; then
+  alias lad="lazydocker"
+fi
 
 
 #######################
@@ -165,3 +185,4 @@ fi
 if [ -f $HOME/.bash_env ]; then
     source $HOME/.bash_env
 fi
+source /usr/share/nvm/init-nvm.sh
