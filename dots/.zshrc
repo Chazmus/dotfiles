@@ -1,5 +1,10 @@
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.config/zsh/ohmyzsh
+
+if [ -d $HOME/.config/zsh/ohmyzsh ]; then
+    export ZSH=$HOME/.config/zsh/ohmyzsh
+elif [ -d $HOME/.oh-my-zsh ]; then
+    export ZSH=$HOME/.oh-my-zsh
+fi
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -185,4 +190,6 @@ fi
 if [ -f $HOME/.bash_env ]; then
     source $HOME/.bash_env
 fi
-source /usr/share/nvm/init-nvm.sh
+if [ -f /usr/share/nvm/init-nvm.sh ]; then
+    source /usr/share/nvm/init-nvm.sh
+fi
