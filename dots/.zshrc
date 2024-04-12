@@ -166,6 +166,14 @@ elif type wl-copy > /dev/null; then
     alias paste='wl-paste'
 fi
 
+########################
+# Nicer open
+########################
+
+if type xdg-open > /dev/null; then
+  alias open='xdg-open'
+fi
+
 ############
 # Aliases #
 ###########
