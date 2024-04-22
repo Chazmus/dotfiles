@@ -1,9 +1,9 @@
 # Path to your oh-my-zsh installation.
 
 if [ -d $HOME/.config/zsh/ohmyzsh ]; then
-    export ZSH=$HOME/.config/zsh/ohmyzsh
+  export ZSH=$HOME/.config/zsh/ohmyzsh
 elif [ -d $HOME/.oh-my-zsh ]; then
-    export ZSH=$HOME/.oh-my-zsh
+  export ZSH=$HOME/.oh-my-zsh
 fi
 
 # Set name of the theme to load.
@@ -77,32 +77,32 @@ set -o vi
 
 # Actually, neovim editor best editor
 if type nvim > /dev/null; then
-    alias vim="nvim"
+  alias vim="nvim"
 fi
 
 ##########################
 # Restish
 ##########################
 if type restish > /dev/null; then
-    alias restish="noglob restish"
+  alias restish="noglob restish"
 fi
 
 #############
 # Functions #
 #############
 function findfile {
-    find . -iname "*$@*"
+  find . -iname "*$@*"
 }
 
 function newscript {
-    history | tail -20 |cut -c 8- > newscript.sh;  chmod 777 newscript.sh; sed -i '1 i\#!/usr/bin/bash' newscript.sh
-}
+  history | tail -20 |cut -c 8- > newscript.sh;  chmod 777 newscript.sh; sed -i '1 i\#!/usr/bin/bash' newscript.sh
+  }
 
 ###################
 # Words of wisdom #
 ###################
 if type fortune > /dev/null && type cowsay > /dev/null && type lolcat > /dev/null; then
-    fortune|cowsay|lolcat --spread 1
+  fortune|cowsay|lolcat --spread 1
 fi
 
 ################
@@ -110,25 +110,25 @@ fi
 ################
 # Jenv
 if type jenv > /dev/null; then
-    export PATH=$HOME/.jenv/shims:$PATH
-    export PATH=$HOME/.jenv/bin:$PATH
-    eval "$(jenv init -)"
+  export PATH=$HOME/.jenv/shims:$PATH
+  export PATH=$HOME/.jenv/bin:$PATH
+  eval "$(jenv init -)"
 fi
 if type pyenv > /dev/null; then
-    eval "$(pyenv init -)"
+  eval "$(pyenv init -)"
 fi
 
 
-if type fasd > /dev/null; then
-    eval "$(fasd --init auto)"
-    alias v='f -e vim' # quick opening files with vim
+##################
+# zoxide
+##################
+if type zoxide > /dev/null; then
+  eval "$(zoxide init zsh)"
+  alias v='f -e vim' # quick opening files with vim
+  alias cd="z"
 else
-    echo "Install fasd, it's good"
+  echo "Install zoxide, it's good"
 fi
-
-# if type trash-put > /dev/null; then
-#    alias rm='trash-put'
-# fi
 
 # Fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -153,17 +153,17 @@ fi
 ##################
 
 if type xclip > /dev/null; then
-    # for x based linux wms
-    alias copy='xclip -selection clipboard'
-    alias paste='xclip -selection clipboard -o'
+  # for x based linux wms
+  alias copy='xclip -selection clipboard'
+  alias paste='xclip -selection clipboard -o'
 elif type pbcopy > /dev/null; then
-    # for mac
-    alias copy='pbcopy'
-    alias paste='pbpaste'
+  # for mac
+  alias copy='pbcopy'
+  alias paste='pbpaste'
 elif type wl-copy > /dev/null; then
-    # for wayland based linux wms
-    alias copy='wl-copy'
-    alias paste='wl-paste'
+  # for wayland based linux wms
+  alias copy='wl-copy'
+  alias paste='wl-paste'
 fi
 
 ########################
@@ -173,6 +173,83 @@ fi
 if type xdg-open > /dev/null; then
   alias open='xdg-open'
 fi
+
+############
+# fzf
+############
+
+if type fzf > /dev/null; then
+  # eval "$(fzf --zsh)"
+  source /usr/share/fzf/key-bindings.zsh
+  source /usr/share/fzf/completion.zsh
+  if type fd > /dev/null; then
+    # -- Use fd instead of find --
+    export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+    # Use fd (https://github.com/sharkdp/fd) for listing path candidates.
+    # - The first argument to the function ($1) is the base path to start traversal
+    # - See the source code (completion.{bash,zsh}) for the details.
+    _fzf_compgen_path() {
+      fd --hidden --exclude .git . "$1"
+    }
+
+    # Use fd to generate the list for directory completion
+    _fzf_compgen_dir() {
+      fd --type=d --hidden --exclude .git . "$1"
+    }
+  fi
+  export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
+  if type eza > /dev/null; then
+    export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+    # Advanced customization of fzf options via _fzf_comprun function
+    # - The first argument to the function is the name of the command.
+    # - You should make sure to pass the rest of the arguments to fzf.
+    _fzf_comprun() {
+      local command=$1
+      shift
+
+      case "$command" in
+        cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+        export|unset) fzf --preview "eval 'echo \$'{}"         "$@" ;;
+        ssh)          fzf --preview 'dig {}'                   "$@" ;;
+        *)            fzf --preview "bat -n --color=always --line-range :500 {}" "$@" ;;
+      esac
+    }
+  fi
+  # theme
+  export FZF_DEFAULT_OPTS='--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4'
+fi
+
+if type eza > /dev/null; then
+  alias ls="eza"
+fi
+
+
+############
+# The fuck
+############
+if type fuck > /dev/null; then
+  eval $(thefuck --alias)
+fi
+
+
+############
+# bat
+############
+
+if type bat > /dev/null; then
+  export BAT_THEME="Dracula"
+fi
+
+############
+# git-fzf.sh
+############
+
+if [ -d ~/tools/fzf-git.sh ]; then
+  source ~/tools/fzf-git.sh/fzf-git.sh
+fi
+
 
 ############
 # Aliases #
@@ -192,12 +269,12 @@ fi
 # Load env settings   #
 #######################
 if [ -f $HOME/.zsh_env ]; then
-    source $HOME/.zsh_env
+  source $HOME/.zsh_env
 fi
 
 if [ -f $HOME/.bash_env ]; then
-    source $HOME/.bash_env
+  source $HOME/.bash_env
 fi
 if [ -f /usr/share/nvm/init-nvm.sh ]; then
-    source /usr/share/nvm/init-nvm.sh
+  source /usr/share/nvm/init-nvm.sh
 fi

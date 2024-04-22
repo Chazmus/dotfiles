@@ -1,51 +1,68 @@
 [pull]
-    rebase = true
+  rebase = true
 [push]
-    default = simple
-	  autoSetupRemote = true
+  default = simple
+  autoSetupRemote = true
 [core]
-    trustctime = false
-    editor = vim
-    filemode = false
-    autocrlf = false
-    excludesfile = ~/.gitignore_global
+  trustctime = false
+  editor = vim
+  filemode = false
+  autocrlf = false
+  excludesfile = ~/.gitignore_global
 [color]
-    ui = true
+  ui = true
 [mergetool]
-    keeptemporaries = false
-    keepbackups = false
-    prompt = false
-    trustexitcode = false
+  keeptemporaries = false
+  keepbackups = false
+  prompt = false
+  trustexitcode = false
 [alias]
-    last = log -1 --stat
-    cp = cherry-pick
-    co = checkout
-    cl = clone
-    ci = commit
-    st = status -sb
-    br = branch
-    unstage = reset HEAD --
-    dc = diff --cached
-    undo = reset --soft HEAD^
-    lg = !"git lg1"
-    lg1 = !"git lg1-specific --all"
-    lg2 = !"git lg2-specific --all"
-    lg2this = !"git lg2-specific"
-    lg3 = !"git lg3-specific --all"
-    lg1-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
-    lg2-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
-    lg3-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
-    yolo = push --force
-    ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ ;}; gi"
-	staash = stash --all
+  last = log -1 --stat
+  cp = cherry-pick
+  co = checkout
+  cl = clone
+  ci = commit
+  st = status -sb
+  br = branch
+  unstage = reset HEAD --
+  dc = diff --cached
+  undo = reset --soft HEAD^
+  lg = !"git lg1"
+  lg1 = !"git lg1-specific --all"
+  lg2 = !"git lg2-specific --all"
+  lg2this = !"git lg2-specific"
+  lg3 = !"git lg3-specific --all"
+  lg1-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
+  lg2-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+  lg3-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
+  yolo = push --force
+  ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ ;}; gi"
+  staash = stash --all
 [user]
-    name = Chaz Bailey
-    email = chaz.bailey@forgerock.com
+  name = Chaz Bailey
+  email = chaz.bailey@forgerock.com
 [credential]
-    helper = store
+  helper = store
 [help]
-    autocorrect = 1
+  autocorrect = 1
 [rebase]
-    autoStash = true
+  autoStash = true
 [rerere]
-	enabled = true
+  enabled = true
+[column]
+  ui = auto
+[branch]
+  sort = -committerdate
+[maintenance]
+  repo = /home/cbailey/workspace/openam-cbailey
+[core]
+  pager = delta
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true    # use n and N to move between diff sections
+  side-by-side = true
+[merge]
+  conflictstyle = diff3
+[diff]
+  colorMoved = default
