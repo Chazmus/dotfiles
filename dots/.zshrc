@@ -96,7 +96,7 @@ function findfile {
 
 function newscript {
   history | tail -20 |cut -c 8- > newscript.sh;  chmod 777 newscript.sh; sed -i '1 i\#!/usr/bin/bash' newscript.sh
-  }
+}
 
 ###################
 # Words of wisdom #
@@ -222,7 +222,7 @@ if type fzf > /dev/null; then
 fi
 
 if type eza > /dev/null; then
-  alias ls="eza"
+  alias ls="eza --icons=always --all"
 fi
 
 
@@ -242,12 +242,29 @@ if type bat > /dev/null; then
   export BAT_THEME="Dracula"
 fi
 
+
+############
+# copilot
+############
+
+if type gh > /dev/null; then
+  alias ghcs="gh copilot suggest"
+  alias ghce="gh copilot explain"
+fi
+
 ############
 # git-fzf.sh
 ############
 
 if [ -d ~/tools/fzf-git.sh ]; then
   source ~/tools/fzf-git.sh/fzf-git.sh
+fi
+
+########
+# Atuin
+########
+if type atuin > /dev/null; then
+  eval "$(atuin init zsh)"
 fi
 
 
