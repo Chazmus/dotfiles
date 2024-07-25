@@ -4,7 +4,7 @@ set ideajoin
 
 " Plugins
 set surround
-nnoremap s :action KJumpAction<Enter>
+" nnoremap s :action KJumpAction<Enter>
 set sneak
 
 set scrolloff=3 " 3 lines above/below cursor when scrolling

@@ -94,8 +94,42 @@ function findfile {
   find . -iname "*$@*"
 }
 
-function newscript {
-  history | tail -20 |cut -c 8- > newscript.sh;  chmod 777 newscript.sh; sed -i '1 i\#!/usr/bin/bash' newscript.sh
+newscript() {
+  # Set the default number of lines to 20 if not provided
+  num_lines=${1:-20}
+
+  # Get the specified number of entries from bash history, strip line numbers
+  history | tail -n $num_lines | awk '{$1=""; print substr($0,2)}' | sed "s/'/'\"'\"'/g" > /tmp/last_commands.txt
+
+  # Create the new Python script
+  cat << EOF > newscript.py
+#!/usr/bin/env python3
+import subprocess
+
+commands = [
+EOF
+
+  # Append each command as a list item in the Python script
+  while IFS= read -r line; do
+    echo "    '$line'," >> newscript.py
+  done < /tmp/last_commands.txt
+
+  # Close the list and add the execution code
+  cat << 'EOF' >> newscript.py
+]
+
+for command in commands:
+    print(f"Executing: {command}")
+    subprocess.run(command, shell=True)
+EOF
+
+  # Remove temporary file
+  rm /tmp/last_commands.txt
+
+  # Make the new Python script executable
+  chmod +x newscript.py
+
+  echo "newscript.py created and made executable."
 }
 
 ###################
