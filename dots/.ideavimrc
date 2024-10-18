@@ -75,9 +75,16 @@ nmap <leader>X :action GotoPreviousError<cr>
 
 " Refactorings
 vmap T :action Refactorings.QuickListPopupAction<cr>
+
 nmap <leader>rr :action RenameElement<cr>
 nmap <leader>rg :action Generate<cr>
 nmap <leader>rI :action OptimizeImports<cr>
+nmap <leader>rv :action IntroduceVariable<cr>
+nmap <leader>rm :action ExtractMethod<cr>
+
+vmap <leader>rv :action IntroduceVariable<cr>
+vmap <leader>rm :action ExtractMethod<cr>
+
 " Inspection
 nmap <leader>rc :action InspectCode<cr>
 
@@ -88,6 +95,7 @@ nmap <leader>yp :action Vcs.QuickListPopupAction<cr>
 nmap <leader>ya :action Annotate<cr>
 nmap <leader>yl :action Vcs.Show.Log<cr>
 nmap <leader>yd :action Compare.LastVersion<cr>
+nmap <leader>git :action Vcs.QuickListPopupAction<cr>
 " nmap <leader>yr :action Git.ResolveConflicts<cr>                          
 
 
