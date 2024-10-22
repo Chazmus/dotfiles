@@ -188,9 +188,10 @@ if [ -d ~/.cargo/bin ]; then
   export PATH=$PATH:~/.cargo/bin
 fi
 
-####################
-# Rip              #
-####################
+########################################
+# Rip                                  #
+# https://github.com/MilesCranmer/rip2 #
+########################################
 if type rip > /dev/null; then
   eval "$(rip completions zsh)"
   alias rm='echo "Use rip instead of rm"'
