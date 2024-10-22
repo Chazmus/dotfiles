@@ -176,10 +176,24 @@ fi
 if [ -e /home/cbailey/.nix-profile/etc/profile.d/nix.sh ]; then . /home/cbailey/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 # go
-# If directory exists, add to path
 if [ -d ~/go/bin ]; then
   export PATH=$PATH:~/go/bin
   export PATH=$PATH:/usr/lib/go/bin
+fi
+
+####################
+# Rust cargo bins  #
+####################
+if [ -d ~/.cargo/bin ]; then
+  export PATH=$PATH:~/.cargo/bin
+fi
+
+####################
+# Rip              #
+####################
+if type rip > /dev/null; then
+  eval "$(rip completions zsh)"
+  alias rm='echo "Use rip instead of rm"'
 fi
 
 ##################
