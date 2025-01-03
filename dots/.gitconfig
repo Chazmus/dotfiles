@@ -66,3 +66,5 @@
   conflictstyle = diff3
 [diff]
   colorMoved = default
+[credential "https://source.developers.google.com"]
+	helper = gcloud.sh

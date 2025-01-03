@@ -194,7 +194,6 @@ fi
 ########################################
 if type rip > /dev/null; then
   eval "$(rip completions zsh)"
-  alias rm='echo "Use rip instead of rm"'
 fi
 
 ##################
