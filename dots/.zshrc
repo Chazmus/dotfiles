@@ -143,19 +143,24 @@ fi
 # Some tools   #
 ################
 # Jenv
+
+[ -d ~/.jenv ] && PATH=$PATH:~/.jenv/bin
+
 if type jenv > /dev/null; then
   export PATH=$HOME/.jenv/shims:$PATH
-  export PATH=$HOME/.jenv/bin:$PATH
   eval "$(jenv init -)"
 fi
+
+# Pyenv
+if [ -d ~/.pyenv ]; then 
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
 if type pyenv > /dev/null; then
   eval "$(pyenv init -)"
 fi
+fi 
 
-
-##################
 # zoxide
-##################
 if type zoxide > /dev/null; then
   eval "$(zoxide init zsh)"
   alias v='f -e vim' # quick opening files with vim
@@ -171,6 +176,7 @@ fi
 # User bin folder #
 ###################
 [ -d ~/bin ] && PATH=$PATH:~/bin
+[ -d ~/.local/bin ] && PATH=$PATH:~/.local/bin
 
 # Nix
 if [ -e /home/cbailey/.nix-profile/etc/profile.d/nix.sh ]; then . /home/cbailey/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
