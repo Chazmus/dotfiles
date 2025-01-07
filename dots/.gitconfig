@@ -40,7 +40,7 @@
   staash = stash --all
 [user]
   name = Chaz Bailey
-  email = chaz.bailey@forgerock.com
+  email = chaz.bailey@pingidentity.com
 [credential]
   helper = store
 [help]
